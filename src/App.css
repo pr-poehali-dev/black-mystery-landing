@@ -97,139 +97,106 @@ body {
   color: #fff;
 }
 
-/* ===== 3D BOOK SCENE ===== */
-.book-scene {
-  perspective: 1000px;
-  cursor: pointer;
-  user-select: none;
-  margin-bottom: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  touch-action: manipulation;
-}
-
-.book-3d {
+/* ===== BOOK ===== */
+.book-wrap {
+  position: relative;
   width: 260px;
   height: 380px;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
-  transform: rotateY(0deg);
-  filter: drop-shadow(-12px 24px 40px rgba(0, 0, 0, 0.7))
-    drop-shadow(0 8px 20px rgba(100, 40, 220, 0.4));
+  margin-bottom: 24px;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  /* объёмная тень */
+  filter: drop-shadow(-10px 20px 30px rgba(0, 0, 0, 0.8));
 }
 
-.book-scene.is-flipped .book-3d {
-  transform: rotateY(-180deg);
+/* корешок — видимая полоса слева */
+.book-spine-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 100%;
+  background: linear-gradient(to right, #0a0318, #2a0860);
+  border-radius: 3px 0 0 3px;
+  z-index: 2;
 }
 
-.book-face {
+/* обе стороны */
+.book-side {
   position: absolute;
   inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 2px 8px 8px 2px;
+  border-radius: 0 6px 6px 0;
   overflow: hidden;
-}
-
-/* Объёмный корешок книги */
-.book-3d::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 2px;
-  width: 20px;
-  height: calc(100% - 4px);
-  background: linear-gradient(to right, #1a0828, #3a1060);
-  transform: rotateY(-90deg);
-  transform-origin: right center;
-  backface-visibility: hidden;
-  border-radius: 4px 0 0 4px;
-}
-
-/* Нижний торец */
-.book-3d::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 2px;
-  width: calc(100% - 4px);
-  height: 8px;
-  background: linear-gradient(to bottom, #2a0a40, #110520);
-  transform: rotateX(-90deg);
-  transform-origin: top center;
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
   backface-visibility: hidden;
 }
 
+/* передняя сторона */
 .book-front {
   transform: rotateY(0deg);
-  background: #1a0a2e;
-  box-shadow: inset -6px 0 18px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  z-index: 1;
 }
 
-.book-back {
-  transform: rotateY(180deg);
-  background: linear-gradient(160deg, #0d0520 0%, #1a0a2e 50%, #0d0520 100%);
-  border-radius: 8px 2px 2px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 24px;
-  border: 1px solid rgba(160, 100, 255, 0.2);
-}
-
-.cover-img {
+.book-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.book-spine {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 14px;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(20, 5, 50, 0.95),
-    rgba(80, 30, 160, 0.5)
-  );
-  border-right: 1px solid rgba(120, 60, 200, 0.3);
+/* задняя сторона — изначально скрыта за поворотом */
+.book-back {
+  background: linear-gradient(160deg, #0a0220, #1a0840, #0a0220);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 22px;
+  transform: rotateY(-180deg);
+  opacity: 0;
+  z-index: 0;
 }
 
 .back-quote {
   font-family: "Cormorant", serif;
   font-size: 22px;
   font-weight: 700;
-  font-style: normal;
   color: #fff;
   text-align: center;
-  line-height: 1.45;
-  text-shadow:
-    0 2px 24px rgba(160, 100, 255, 0.6),
-    0 0 8px rgba(255, 255, 255, 0.15);
-  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* флип */
+.book-wrap.is-flipped .book-front {
+  transform: rotateY(180deg);
+  opacity: 0;
+}
+
+.book-wrap.is-flipped .book-back {
+  transform: rotateY(0deg);
+  opacity: 1;
+  z-index: 1;
 }
 
 .tap-hint {
-  margin-top: 12px;
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.4);
   text-align: center;
+  margin-bottom: 8px;
   animation: pulse-hint 2.5s ease-in-out infinite;
 }
 
 @keyframes pulse-hint {
   0%,
   100% {
-    opacity: 0.5;
+    opacity: 0.4;
   }
   50% {
-    opacity: 1;
+    opacity: 0.9;
   }
 }
 

@@ -1,6 +1,10 @@
+import { useState } from "react";
+
 const COVER_IMAGE = "https://cdn.poehali.dev/projects/b4b86a50-853e-4117-87f9-c0d94ace6e0f/bucket/87c39a0e-3574-4bfa-906d-17657730a7a5.jpg";
 
 export default function Index() {
+  const [flipped, setFlipped] = useState(false);
+
   return (
     <div className="landing-root">
       <div className="bg-glow" />
@@ -11,6 +15,25 @@ export default function Index() {
         Иллюзия<br />
         <span className="title-second">реальности</span>
       </h1>
+
+      <div
+        className={`book-wrap${flipped ? " is-flipped" : ""}`}
+        onClick={() => setFlipped(f => !f)}
+      >
+        <div className="book-spine-bar" />
+        <div className="book-side book-front">
+          <img src={COVER_IMAGE} alt="Обложка книги" />
+        </div>
+        <div className="book-side book-back">
+          <p className="back-quote">
+            Что если всё, что ты видишь — лишь отражение того, во что ты решил поверить?
+          </p>
+        </div>
+      </div>
+
+      <p className="tap-hint">
+        {flipped ? "Коснитесь, чтобы вернуть" : "Коснитесь, чтобы перевернуть"}
+      </p>
 
       <div className="author-block">
         <p className="author-text">
