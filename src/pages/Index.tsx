@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const COVER_IMAGE = "https://cdn.poehali.dev/projects/b4b86a50-853e-4117-87f9-c0d94ace6e0f/files/4376ab82-e5c4-457b-8f3a-daff4b421c6e.jpg";
+const COVER_IMAGE = "https://cdn.poehali.dev/projects/b4b86a50-853e-4117-87f9-c0d94ace6e0f/bucket/87c39a0e-3574-4bfa-906d-17657730a7a5.jpg";
 
 export default function Index() {
   const [flipped, setFlipped] = useState(false);
