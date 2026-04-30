@@ -169,7 +169,7 @@ body {
 }
 
 .book-back {
-  transform: rotateY(-180deg);
+  transform: rotateY(180deg);
   background: linear-gradient(160deg, #0d0520 0%, #1a0a2e 50%, #0d0520 100%);
   border-radius: 8px 2px 2px 8px;
   display: flex;
