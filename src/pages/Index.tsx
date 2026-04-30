@@ -32,7 +32,7 @@ export default function Index() {
             <div className="book-spine" />
           </div>
           <div className="book-face book-back">
-            <p className="back-quote">
+            <p className="back-quote" style={{ transform: "scaleX(-1)" }}>
               Что если всё, что ты видишь — лишь отражение того, во что ты решил поверить?
             </p>
           </div>
