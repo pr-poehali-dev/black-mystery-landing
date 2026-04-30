@@ -1,14 +1,72 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
 
-const Index = () => {
+const COVER_IMAGE = "https://cdn.poehali.dev/projects/b4b86a50-853e-4117-87f9-c0d94ace6e0f/files/4376ab82-e5c4-457b-8f3a-daff4b421c6e.jpg";
+
+export default function Index() {
+  const [flipped, setFlipped] = useState(false);
+
+  const handleFlip = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    setFlipped((prev) => !prev);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
+    <div className="landing-root">
+      <div className="bg-glow" />
+
+      <p className="author-name">ФАРГАТ ЗАКИРОВ</p>
+
+      <h1 className="book-title">
+        Иллюзия<br />
+        <span className="title-second">реальности</span>
+      </h1>
+
+      <div
+        className={`book-scene${flipped ? " is-flipped" : ""}`}
+        onClick={handleFlip}
+        onTouchEnd={handleFlip}
+      >
+        <div className="book-3d">
+          <div className="book-face book-front">
+            <img src={COVER_IMAGE} alt="Обложка книги" className="cover-img" />
+            <div className="book-spine" />
+          </div>
+          <div className="book-face book-back">
+            <p className="back-quote">
+              Что если всё, что ты видишь&nbsp;— лишь отражение того, во что ты решил поверить?
+            </p>
+          </div>
+        </div>
+        <p className="tap-hint">
+          {flipped ? "Коснитесь, чтобы вернуть" : "Коснитесь, чтобы перевернуть"}
+        </p>
+      </div>
+
+      <div className="author-block">
+        <p className="author-text">
+          Я создал этот сайт, потому что пишу книгу. У меня нет громких рекламных кампаний. Только я, текст и желание, чтобы меня услышали. Книга рождается прямо сейчас. Вы видите всё, как есть. Мне удалось вас заинтриговать?
+        </p>
+      </div>
+
+      <div className="genres">
+        {["ФАНТАСТИКА", "ДЕТЕКТИВ", "ПСИХОЛОГИЧЕСКИЙ ТРИЛЛЕР"].map((g) => (
+          <span key={g} className="genre-pill">{g}</span>
+        ))}
+      </div>
+
+      <div className="annotation">
+        <p>
+          Алчный предприниматель узнаёт об изобретении, способном изменить мир. Он хочет завладеть им любой ценой. Но так ли прост его создатель? Не обернётся ли охотник жертвой в этой опасной игре? Реальность переплетается с иллюзией, а человечность выворачивается наизнанку и проверяется на прочность.
+        </p>
+      </div>
+
+      <div className="cta-block">
+        <a href="#" className="btn btn-red">Читать книгу</a>
+        <p className="cta-phrase">
+          Выбор за вами. Но помните: реальность&nbsp;— всего лишь иллюзия
+        </p>
+        <a href="#" className="btn btn-blue">Узнать больше</a>
       </div>
     </div>
   );
-};
-
-export default Index;
+}
