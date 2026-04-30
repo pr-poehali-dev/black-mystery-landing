@@ -99,7 +99,7 @@ body {
 
 /* ===== 3D BOOK SCENE ===== */
 .book-scene {
-  perspective: 900px;
+  perspective: 1000px;
   cursor: pointer;
   user-select: none;
   margin-bottom: 8px;
@@ -114,13 +114,14 @@ body {
   height: 380px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform: rotateY(0deg);
-  filter: drop-shadow(0 20px 40px rgba(100, 40, 220, 0.45));
+  filter: drop-shadow(-12px 24px 40px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 8px 20px rgba(100, 40, 220, 0.4));
 }
 
 .book-scene.is-flipped .book-3d {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 .book-face {
@@ -128,24 +129,54 @@ body {
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 4px 10px 10px 4px;
+  border-radius: 2px 8px 8px 2px;
   overflow: hidden;
+}
+
+/* Объёмный корешок книги */
+.book-3d::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 2px;
+  width: 20px;
+  height: calc(100% - 4px);
+  background: linear-gradient(to right, #1a0828, #3a1060);
+  transform: rotateY(-90deg);
+  transform-origin: right center;
+  backface-visibility: hidden;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Нижний торец */
+.book-3d::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: 8px;
+  background: linear-gradient(to bottom, #2a0a40, #110520);
+  transform: rotateX(-90deg);
+  transform-origin: top center;
+  backface-visibility: hidden;
 }
 
 .book-front {
   transform: rotateY(0deg);
   background: #1a0a2e;
+  box-shadow: inset -6px 0 18px rgba(0, 0, 0, 0.5);
 }
 
 .book-back {
-  transform: rotateY(180deg);
-  background: linear-gradient(135deg, #0d0520 0%, #1a0a2e 50%, #0d0520 100%);
-  border-radius: 10px 4px 4px 10px;
+  transform: rotateY(-180deg);
+  background: linear-gradient(160deg, #0d0520 0%, #1a0a2e 50%, #0d0520 100%);
+  border-radius: 8px 2px 2px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 20px;
-  border: 1px solid rgba(160, 100, 255, 0.25);
+  padding: 28px 24px;
+  border: 1px solid rgba(160, 100, 255, 0.2);
 }
 
 .cover-img {
@@ -159,14 +190,14 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  width: 12px;
+  width: 14px;
   height: 100%;
   background: linear-gradient(
     to right,
-    rgba(80, 30, 160, 0.8),
-    rgba(120, 60, 200, 0.4)
+    rgba(20, 5, 50, 0.95),
+    rgba(80, 30, 160, 0.5)
   );
-  border-right: 1px solid rgba(160, 100, 255, 0.2);
+  border-right: 1px solid rgba(120, 60, 200, 0.3);
 }
 
 .back-quote {
