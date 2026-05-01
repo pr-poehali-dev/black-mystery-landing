@@ -178,17 +178,18 @@ body {
 @keyframes pulse-hint {
   0%,
   100% {
-    opacity: 0.4;
+    opacity: 0.35;
     text-shadow:
-      0 0 6px rgba(130, 70, 255, 0.2),
-      0 0 12px rgba(80, 60, 200, 0.1);
+      0 0 8px rgba(150, 80, 255, 0.5),
+      0 0 16px rgba(100, 60, 220, 0.3);
   }
   50% {
-    opacity: 0.9;
+    opacity: 1;
     text-shadow:
-      0 0 10px rgba(160, 90, 255, 0.8),
-      0 0 22px rgba(100, 60, 220, 0.5),
-      0 0 40px rgba(80, 40, 180, 0.3);
+      0 0 8px rgba(220, 160, 255, 1),
+      0 0 20px rgba(180, 100, 255, 1),
+      0 0 40px rgba(130, 60, 255, 0.8),
+      0 0 70px rgba(90, 40, 210, 0.6);
   }
 }
 
