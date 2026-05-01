@@ -61,6 +61,7 @@ export default function Index() {
       <p className="cta-phrase">
         Выбор за вами. Но помните: реальность&nbsp;— всего лишь иллюзия
       </p>
+      <div style={{ height: 90, backgroundColor: '#000000' }} />
     </div>
   );
 }
