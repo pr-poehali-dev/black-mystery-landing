@@ -54,8 +54,8 @@ export default function Index() {
       </div>
 
       <div className="cta-block">
-        <a href="#" className="btn btn-red">Читать книгу</a>
-        <a href="#" className="btn btn-blue">Узнать больше</a>
+        <a href="https://proza.ru/2025/11/30/1566" target="_blank" rel="noopener noreferrer" className="btn btn-red">Читать книгу</a>
+        <a href="https://vk.com/illusion_real" target="_blank" rel="noopener noreferrer" className="btn btn-blue">Узнать больше</a>
       </div>
 
       <p className="cta-phrase">
