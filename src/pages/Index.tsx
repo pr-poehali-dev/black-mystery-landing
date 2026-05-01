@@ -16,24 +16,24 @@ export default function Index() {
         <span className="title-second">реальности</span>
       </h1>
 
-      <div
-        className={`book-wrap${flipped ? " is-flipped" : ""}`}
-        onClick={() => setFlipped(f => !f)}
-      >
-        <div className="book-spine-bar" />
-        <div className="book-side book-front">
-          <img src={COVER_IMAGE} alt="Обложка книги" />
-        </div>
-        <div className="book-side book-back">
-          <p className="back-quote">
-            Что если всё, что ты видишь — лишь отражение того, во что ты решил поверить?
-          </p>
-        </div>
-      </div>
+      <div className="book-scene" onClick={() => setFlipped(f => !f)}>
+        <div className={`book-inner${flipped ? " flipped" : ""}`}>
 
-      <p className="tap-hint">
-        {flipped ? "Коснитесь, чтобы вернуть" : "Коснитесь, чтобы перевернуть"}
-      </p>
+          <div className="book-face front">
+            <img src={COVER_IMAGE} alt="Обложка" />
+          </div>
+
+          <div className="book-face back">
+            <p className="back-quote">
+              Что если всё, что ты видишь — лишь отражение того, во что ты решил поверить?
+            </p>
+          </div>
+
+        </div>
+        <p className="tap-hint">
+          {flipped ? "Коснитесь, чтобы вернуть" : "Коснитесь, чтобы перевернуть"}
+        </p>
+      </div>
 
       <div className="author-block">
         <p className="author-text">
