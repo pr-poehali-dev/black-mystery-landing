@@ -179,9 +179,16 @@ body {
   0%,
   100% {
     opacity: 0.4;
+    text-shadow:
+      0 0 6px rgba(130, 70, 255, 0.2),
+      0 0 12px rgba(80, 60, 200, 0.1);
   }
   50% {
     opacity: 0.9;
+    text-shadow:
+      0 0 10px rgba(160, 90, 255, 0.8),
+      0 0 22px rgba(100, 60, 220, 0.5),
+      0 0 40px rgba(80, 40, 180, 0.3);
   }
 }
 
