@@ -78,9 +78,11 @@ body {
   margin-bottom: 10px;
   text-align: center;
   text-shadow:
-    0 0 10px rgba(160, 100, 255, 0.7),
-    0 0 22px rgba(100, 60, 220, 0.45),
-    0 0 40px rgba(80, 40, 180, 0.25);
+    0 0 6px rgba(220, 160, 255, 1),
+    0 0 16px rgba(180, 100, 255, 1),
+    0 0 35px rgba(130, 60, 255, 0.9),
+    0 0 60px rgba(90, 40, 210, 0.7),
+    0 0 90px rgba(70, 30, 180, 0.4);
 }
 
 /* ===== BOOK TITLE ===== */
