@@ -1,9 +1,24 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const COVER_IMAGE = "https://cdn.poehali.dev/projects/b4b86a50-853e-4117-87f9-c0d94ace6e0f/bucket/87c39a0e-3574-4bfa-906d-17657730a7a5.jpg";
 
 export default function Index() {
   const [flipped, setFlipped] = useState(false);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = () => {
+    hoverTimer.current = setTimeout(() => setFlipped(true), 300);
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    setFlipped(false);
+  };
+
+  const handleTouch = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    setFlipped(f => !f);
+  };
 
   return (
     <div className="landing-root">
@@ -16,7 +31,12 @@ export default function Index() {
         <span className="title-second">реальности</span>
       </h1>
 
-      <div className="book-scene" onClick={() => setFlipped(f => !f)}>
+      <div
+        className="book-scene"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouch}
+      >
         <div className={`book-inner${flipped ? " flipped" : ""}`}>
 
           <div className="book-face front">
@@ -39,7 +59,7 @@ export default function Index() {
 
         </div>
         <p className="tap-hint">
-          {flipped ? "Коснитесь, чтобы вернуть" : "Коснитесь, чтобы перевернуть"}
+          {flipped ? "Уберите курсор, чтобы вернуть" : "Наведите или коснитесь"}
         </p>
       </div>
 
