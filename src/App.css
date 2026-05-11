@@ -220,8 +220,8 @@ body {
   width: 36px;
   height: 320px;
   top: 0;
-  left: 220px;
-  transform: rotateY(90deg) translateZ(0px);
+  left: 0;
+  transform: rotateY(90deg) translateZ(220px);
   transform-origin: left center;
   background: repeating-linear-gradient(
     to bottom,
