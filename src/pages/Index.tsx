@@ -29,7 +29,8 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="book-spine" />
+          <div className="book-face book-spine" />
+          <div className="book-face book-pages" />
 
         </div>
         <p className="tap-hint">
